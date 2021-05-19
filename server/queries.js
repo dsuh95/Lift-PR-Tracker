@@ -18,19 +18,20 @@ connection.connect((err) => {
 
 
 const getPRs = async (liftName) => {
-  var getQuery = `SELECT * FROM prs WHERE lift_name=${liftName}`;
+  var getQuery = `SELECT * FROM prs WHERE lift_name='${liftName}'`;
   var prs = await connection.query(getQuery);
-  return prs;
+  return prs.rows;
 }
 
 const postPR = (data) => {
-  var postQuery = `INSERT INTO prs (lift_name, weight, date) VALUES (${data.liftName}, ${data.weight}, ${data.date})`
+  var postQuery = `INSERT INTO prs (id, lift_name, weight, date) VALUES (DEFAULT, '${data.liftName}', ${data.weight}, '${data.date}'::DATE)`
+  console.log(postQuery);
   connection.query(postQuery)
     .catch(err => {
       console.log(err);
     })
     .then(() => {
-      return('Post successful');
+      console.log('Post successful');
     })
 }
 

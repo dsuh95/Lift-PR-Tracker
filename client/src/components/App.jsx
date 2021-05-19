@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import $ from 'jquery';
 import PRTable from './PRTable.jsx';
 import moment from 'moment';
@@ -13,43 +13,55 @@ class App extends React.Component {
     this.setLift = this.setLift.bind(this);
     this.getPRs = this.getPRs.bind(this);
     this.state = {
-      data: sampleData.reverse(),
+      data: [],
       lifts: ['Select a Lift', 'Back Squat', 'Front Squat', 'Deadlift', 'Bench Press', 'Bentover Row', 'Overhead Press', 'Weighted Pull Up', 'Clean', 'Clean and Jerk', 'Snatch'],
       currentLift: ''
     };
   }
 
-  getPRs() {
+  componentDidMount() {
+    this.getPRs();
+  }
+
+  // componentDidUpdate() {
+  //   this.getPRs();
+  // }
+
+  getPRs(lift) {
     var self = this;
     $.ajax({
       method: 'GET',
-      url: '/pr',
-      success: (data) => {
-        console.log(data);
+      url: `/pr?liftName=${lift}`,
+      success: (results) => {
+        console.log(results);
+        self.setState({
+          data: results.reverse()
+        })
       }
     })
   }
 
-  addEntry(entry) {
-    if (entry && this.state.currentLift !== 'Select a Lift') {
-      console.log(entry);
+  addEntry(entry, liftName) {
+
+    if (entry && liftName !== 'Select a Lift') {
       entry = parseInt(entry);
       if (entry) {
-        var data = this.state.data.slice();
         var newEntry = {
-          lift: this.state.currentLift,
+          liftName: liftName,
           weight: entry,
           date: moment().format('MM-DD-YYYY')
         }
-        data.unshift(newEntry);
-        this.setState({
-          data: data
+        $.ajax({
+          method: 'POST',
+          url: `/pr`,
+          data: newEntry,
         })
+        this.getPRs(liftName);
       } else {
         console.log('not a valid entry')
       }
     } else {
-      console.log('please enter a value');
+      console.log('please select appropriate values');
     }
   }
 
@@ -57,6 +69,7 @@ class App extends React.Component {
     this.setState({
       currentLift: lift
     })
+    this.getPRs(lift);
   }
 
   render() {
@@ -75,7 +88,7 @@ class App extends React.Component {
             ))}
           </select>
           <input type="text" id="weight" placeholder="What's your new PR?"/>
-          <button onClick={() => {this.addEntry($('#weight').val())}}>Submit</button>
+          <button onClick={() => {this.addEntry($('#weight').val(), $('#lift').val())}}>Submit</button>
         </div>
         <div id='feed'>
           <PRTable liftName={this.state.currentLift} prList={this.state.data}/>
