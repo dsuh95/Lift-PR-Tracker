@@ -2,6 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import PRTable from './PRTable.jsx';
 import moment from 'moment';
+const axios = require('axios');
 
 import sampleData from '../sampleData/liftData.js';
 
@@ -10,11 +11,23 @@ class App extends React.Component {
     super(props);
     this.addEntry = this.addEntry.bind(this);
     this.setLift = this.setLift.bind(this);
+    this.getPRs = this.getPRs.bind(this);
     this.state = {
       data: sampleData.reverse(),
       lifts: ['Select a Lift', 'Back Squat', 'Front Squat', 'Deadlift', 'Bench Press', 'Bentover Row', 'Overhead Press', 'Weighted Pull Up', 'Clean', 'Clean and Jerk', 'Snatch'],
       currentLift: ''
     };
+  }
+
+  getPRs() {
+    var self = this;
+    $.ajax({
+      method: 'GET',
+      url: '/pr',
+      success: (data) => {
+        console.log(data);
+      }
+    })
   }
 
   addEntry(entry) {
