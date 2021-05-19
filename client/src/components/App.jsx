@@ -64,7 +64,6 @@ class App extends React.Component {
           <input type="text" id="weight" placeholder="What's your new PR?"/>
           <button onClick={() => {this.addEntry($('#weight').val())}}>Submit</button>
         </div>
-        {/* Place PR table here from sample data */}
         <div id='feed'>
           <PRTable liftName={this.state.currentLift} prList={this.state.data}/>
         </div>

@@ -15,19 +15,38 @@ body {
 
 #nav {
   text-align: center;
+  margin: 0 auto;
   margin-bottom: 2%;
+  width: 70%;
 }
 
 #liftTitle, #pr {
   text-align: center;
-  width: 50%;
+  width: 80%;
   margin: 0 auto;
   margin-top: 2%;
 }
 
 #feed {
   /* background-color: white; */
-  width: 50%;
+  width: 40%;
   margin: 0 auto;
-  height: 50vw;
+}
+
+#prList {
+  height: 60vh;
+  overflow-y: auto;
+  margin-bottom: 0;
+}
+
+#feedEntry {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
+  margin: 0 auto;
+  color: rgb(161, 161, 161);
+}
+
+#date {
+  text-align: right;
 }
