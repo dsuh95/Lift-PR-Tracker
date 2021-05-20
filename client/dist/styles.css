@@ -1,52 +1,133 @@
 body {
-  background-color: rgb(31, 31, 31);
+  /* background-color: rgb(31, 31, 31); */
   color: white;
-  font-size:larger;
+  font-size: large;
+  height: 100%;
+  background-image:
+    linear-gradient(black, black),
+    url("./header.jpg");
+  background-blend-mode: saturation;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 #header {
-  /* color: white; */
   text-align: center;
   width: 50%;
   border: 2px solid white;
   margin: 0 auto;
   margin-bottom: 2%;
+  font-size: x-large;
+  background-color: rgb(17, 17, 17);
 }
 
 #nav {
-  text-align: center;
-  margin: 0 auto;
+  text-align: left;
+  margin-top: 2%;
   margin-bottom: 2%;
-  width: 70%;
+  width: 100%;
 }
 
-#liftTitle, #pr {
+#lift, #weight {
+  margin-left: 1%;
+  height: 2em;
+}
+
+#lift {
+  height: 2.2em;
+  cursor: pointer;
+}
+
+#button {
+  background-color: black;
+  color: white;
+  margin-left: 1px;
+  border: 1px solid white;
+  border-radius: 2px;
+  height: 2.2em;
+}
+
+#button:hover {
+  background-color:rgb(31, 31, 31);
+  cursor: pointer;
+}
+
+#button:active {
+  background-color: black;
+  color: rgb(158, 158, 158);
+  transform: scale(0.98);
+}
+
+#lift:hover {
+  border: 1px solid white;
+}
+
+#lift:active {
+  transform: scale(0.98);
+}
+
+#liftTitle, #pr, #no-pr {
   text-align: center;
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
   margin-top: 2%;
 }
 
+#pr {
+  border: 1px solid white;
+}
+
+#liftTitle {
+  font-size: 2.2em;
+}
+
 #feed {
-  /* background-color: white; */
-  width: 40%;
+  background-color: rgb(17, 17, 17);
+  width: 50%;
+  height: 70vh;
+  border: 1px solid white;
   margin: 0 auto;
 }
 
+
 #prList {
-  height: 60vh;
+  height: 45vh;
   overflow-y: auto;
-  margin-bottom: 0;
+  margin-top: 2%;
+  /* margin-bottom: 2%; */
+  text-align: center;
 }
 
 #feedEntry {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 5px;
   margin: 0 auto;
+  margin-left: 10%;
   color: rgb(161, 161, 161);
 }
 
 #date {
   text-align: right;
+}
+
+#prInfo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
+}
+
+#progress {
+  text-align: center;
+  border: 1px solid white;
+  margin: 5%;
+}
+
+#change {
+  font-size: 2.5em;
+  text-decoration: underline;
+}
+
+#message {
+  margin-top: 5%;
+  margin-left: 3%;
+  margin-right: 3%;
 }

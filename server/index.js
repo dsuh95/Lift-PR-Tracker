@@ -10,15 +10,14 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static(__dirname + '/../client/dist'));
 
-app.get('/pr*', async (req, res) => {
-  var liftName = req.query.liftName;
-  var results = await db.getPRs(liftName);
+app.get('/pr', async (req, res) => {
+  // var liftName = req.query.liftName;
+  var results = await db.getPRs();
   res.status(200).json(results);
 })
 
 app.post('/pr', (req, res) => {
   var data = req.body;
-  console.log(data);
   db.postPR(data);
 })
 
