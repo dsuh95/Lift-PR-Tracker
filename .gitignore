@@ -351,4 +351,4 @@ MigrationBackup/
 
 
 
-./database/config.js
+database/config.js
