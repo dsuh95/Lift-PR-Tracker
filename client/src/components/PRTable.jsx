@@ -53,21 +53,24 @@ var PRTable = (props) => {
                         <h2>Your change in max <br/>weight this cycle: </h2>
                         <h1 id='change'>{difference}lbs</h1>
                         {difference > 0
-                          ? <h2 id='message'>Nice work!</h2>
+                          ? <div id='message'>
+                              <h2>Nice work!</h2>
+                              <h3>Let's keep it going next cycle</h3>
+                            </div>
                           : <div id='message'>
                               <h2>It's all good, next cycle!</h2>
-                              <h3>Be sure to review your nutrition and recovery as well</h3>
+                              <h3>Be sure to review your nutrition and recovery as well as your program</h3>
                             </div>
                         }
                       </div>
                     : null
                   }
                 </div>
-              : <h4 id='no-pr'>No recorded PRs yet!</h4>
+              : <h4 id='no-pr'>No recorded PRs yet</h4>
             }
 
           </div>
-        : <h2 id='liftTitle'>Select a lift!</h2>
+        : <h2 id='liftTitle'>Select a lift to get started</h2>
       }
     </div>
 

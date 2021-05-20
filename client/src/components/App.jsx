@@ -4,8 +4,6 @@ import PRTable from './PRTable.jsx';
 import moment from 'moment';
 const axios = require('axios');
 
-import sampleData from '../sampleData/liftData.js';
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -70,7 +68,7 @@ class App extends React.Component {
     return (
       <div>
         <div id='header'>
-          <h1>Lift Maxout Tracker</h1>
+          <h1>Lift Personal Record Tracker</h1>
           <h3>How's Your Progress?</h3>
         </div>
         <div id='feed'>
